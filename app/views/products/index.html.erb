@@ -11,6 +11,8 @@
         <dl>
           <dt><%= product.title %></dt>
           <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
+          <br>
+          <dd><%= "Price: #{product.price}" %></dd>
         </dl>
       </td>
     <td class='list_actions'>
