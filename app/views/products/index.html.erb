@@ -12,7 +12,7 @@
           <dt><%= product.title %></dt>
           <dd><%= truncate(strip_tags(product.description), length: 80) %></dd>
           <br>
-          <dd><%= "Price: #{product.price}" %></dd>
+          <dd><%= "Price: #{number_to_currency(product.price, unit: :'£')}" %></dd>
         </dl>
       </td>
     <td class='list_actions'>
