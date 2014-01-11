@@ -1,4 +1,8 @@
 class Product < ActiveRecord::Base
+  has_many :line_items
+
+  # Hook method needed so we can't destroy a product if it is in a basket!
+  before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :title, :description, :image_url, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
@@ -13,4 +17,16 @@ class Product < ActiveRecord::Base
     Product.order(:updated_at).last
   end
 
-end
+  private
+
+    def ensure_not_referenced_by_any_line_item
+      if self.line_items.empty?
+        return true
+      else
+        # errors accessible. Can associate with an attribute (field) or base object(here)
+        errors.add(:base, "Can't destroy; Line Items present for this product")
+        return false
+      end
+    end
+
+end # of class
