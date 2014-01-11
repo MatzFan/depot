@@ -9,6 +9,7 @@ class Product < ActiveRecord::Base
   }
 
   def self.latest # class method to return latest version of a product
+    # Rails method 'updated_at' is timestamp, this orders by that so latest returned
     Product.order(:updated_at).last
   end
 

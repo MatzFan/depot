@@ -3,8 +3,8 @@
 <% end %>
 
 <h1>Store Catalogue</h1>
-<% cache ['store', product.latest] do %> <!-- ActicveSupport method 'cache' -->
-  <% @products.each do |product| %>
+<% cache ['store', Product.latest] do %> <!-- ActicveSupport method 'cache' -->
+  <% @products.each do |product| %> <!-- @products is ALL PRODUCTS -->
     <% cache ['entry', product] do %>
       <div class='entry'>
          <%= image_tag(product.image_url) %>
