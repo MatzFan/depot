@@ -40,6 +40,10 @@
       margin-bottom: 0.8em;
     }
 
+    form, div {
+      display: inline; // for 'Add to cart' buttons, so they are displayed next to price, not underneath
+    }
+
     .price {
       color: #44a;
       font-weight: bold;
