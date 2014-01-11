@@ -11,16 +11,18 @@
   <div id='banner'>
     <%= image_tag('logo.png') %>
     <%= @page_title || 'Depot online store' %>
-    <div id='columns'>
-      <div id='side'>
-        <ul>
-          <li><a href="http://www....">Home</a></li>
-          <li><a href="http://www..../faq">Questions</a></li>
-          <li><a href="http://www..../news">News</a></li>
-          <li><a href="http://www..../contact">Contacts</a></li>
-        </ul>
-      </div>
-      <%= yield %>
+  </div>
+  <div id='columns'>
+    <div id='side'>
+      <ul>
+        <li><a href="http://www....">Home</a></li>
+        <li><a href="http://www..../faq">Questions</a></li>
+        <li><a href="http://www..../news">News</a></li>
+        <li><a href="http://www..../contact">Contacts</a></li>
+      </ul>
+    </div>
+    <div id='main'>
+      <%= yield %> <!-- renders page -->
     </div>
   </div>
 </body>
