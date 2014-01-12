@@ -16,6 +16,7 @@
            next arg is route to do POST to; _path for line_items.
            POST params is product_id: product - i.e. the one in scope of this button - wow! -->
           <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+          <!-- Rails extracts product.id in line above -->
         </div>
       </div>
     <% end %>
