@@ -4,3 +4,7 @@
 // escape_javascript helper translates Ruby string into JS acceptable format
 // script is executed in browser, but embedded Ruby code executed on server-side
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+
+// animate is JS method - included with jquery-ui-rails gem
+$('#current_item').css({'background-color':'#88ff88'}).animate(
+  {'background-color':'#114411'}, 1000);
