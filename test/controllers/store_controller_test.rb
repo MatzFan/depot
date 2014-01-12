@@ -23,11 +23,8 @@ class StoreControllerTest < ActionController::TestCase
 
   test "should use currency formatting" do
     get :index
-    prices = css_select '.price' # selects array of HTML matched
-    prices.each do |price|
-      assert((price =~ /\$[,\d]+\.\d\d/) == 0), "Price: #{price} failed test")
-    end
-    # assert_select '.price', /\$[,\d]+\.\d\d/ # Bad test as passes if ANY ONE element is so formatted
+    # count: 3 makes assertion true only if 3 matches found - i.e. all elements are formatted properly :)
+    assert_select '.price', count: 3, text: /\$[,\d]+\.\d\d/
   end
 
 end # of class
