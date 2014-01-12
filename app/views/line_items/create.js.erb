@@ -1,0 +1,6 @@
+// $ == jQuery
+// jQuery .html method is used with an arg for replacement content
+// tells browser to replace the elements whose id is cart with @cart content
+// escape_javascript helper translates Ruby string into JS acceptable format
+// script is executed in browser, but embedded Ruby code executed on server-side
+$('#cart').html("<%= escape_javascript render(@cart) %>");
