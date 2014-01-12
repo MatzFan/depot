@@ -1,5 +1,15 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  # if request for invalid cart_id comes in, rescue the error from 'set_cart'
+  # (called by 'show' due to line above) and call invalid_cart method
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+
+  def invalid_cart
+    logger.error "Attempt to access invalid cart #{params[:id]}"
+    # notice: is attribute of a Rail 'flash' which records varables
+    # from one browser request to the next
+    redirect_to store_url, notice: 'Invalid cart'
+  end
 
   # GET /carts
   # GET /carts.json
