@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CartsControllerTest < ActionController::TestCase
   setup do
-    @cart = carts(:one)
+    @cart = carts(:one) # a text fixture empty cart
   end
 
   test "should get index" do
@@ -20,7 +20,6 @@ class CartsControllerTest < ActionController::TestCase
     assert_difference('Cart.count') do
       post :create, cart: {  }
     end
-
     assert_redirected_to cart_path(assigns(:cart))
   end
 

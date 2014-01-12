@@ -34,8 +34,12 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        # redirect back to cart now
+        # redirect back to cart now - if non-JS request
         format.html { redirect_to store_url }
+        # .js stops redirect if the request is for JS (i.e. if remote: true in params)
+        # JS will then look instead for a create.js template in views/line_items..
+        # @current_item used in JS UI effects to apply to latest created item
+        format.js { @current_item = @line_item }
         format.json { render action: 'show', status: :created, location: @line_item }
       else
         format.html { render action: 'new' }

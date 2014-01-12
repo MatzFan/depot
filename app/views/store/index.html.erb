@@ -15,7 +15,9 @@
           <!-- button_to is Rails helper for button (does POST). First arg is button name
            next arg is route to do POST to; _path for line_items.
            POST params is product_id: product - i.e. the one in scope of this button - wow! -->
-          <%= button_to 'Add to Cart', line_items_path(product_id: product) %>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product),
+            # remote: true is Rails-speak for do AJAX request
+            remote: true %>
           <!-- Rails extracts product.id in line above -->
         </div>
       </div>
