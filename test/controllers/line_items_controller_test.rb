@@ -21,7 +21,17 @@ class LineItemsControllerTest < ActionController::TestCase
       post :create, product_id: products(:ruby).id # ruby is a fixture name
     end
      # 'assigns' gives access to controller instance vars
-    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_redirected_to store_path
+  end
+
+  test "should create line_item via Ajax" do
+    assert_difference('LineItem.count') do
+      xhr :post, :create, product_id: products(:ruby).id # xhr says do Ajax request
+    end
+    assert_response :success
+    assert_select_jquery :html, '#cart' do
+      assert_select 'tr#current_item td', /Pickaxe Book/
+    end
   end
 
   test "should show line_item" do

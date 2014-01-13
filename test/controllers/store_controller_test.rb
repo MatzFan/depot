@@ -27,4 +27,10 @@ class StoreControllerTest < ActionController::TestCase
     assert_select '.price', count: 3, text: /\$[,\d]+\.\d\d/
   end
 
+  test "markup needed for store.js.coffee is in place" do
+    get :index
+    assert_select '.store .entry > img', 3
+    assert_select '.entry input[type=submit]', 3 # submit is jQuery only CSS extention
+  end
+
 end # of class
