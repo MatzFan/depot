@@ -9,6 +9,7 @@
   </tr>
 </table>
 <%= link_to 'Continue shopping', store_path %>
+<%= button_to 'Checkout', new_order_path, method: :get %>
 <!-- add button to empty cart uses DELETE request-->
 <%= button_to 'Empty cart', @cart, method: :delete,
   data: {confirm: 'Are you sure?'} %>
