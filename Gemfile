@@ -12,6 +12,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry'
   gem 'pry-rails'
+  gem 'railroady' # for UML EER's
 end
 
 group :production do # for Heroku
